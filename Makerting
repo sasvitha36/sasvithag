@@ -1,0 +1,21 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load campaign data
+data = pd.read_excel("email_campaign_data.xlsx")
+
+# Calculate open and click rates
+data['Open Rate'] = (data['Emails Opened'] / data['Emails Sent']) * 100
+data['Click Rate'] = (data['Links Clicked'] / data['Emails Sent']) * 100
+
+# Plotting
+plt.figure(figsize=(10,5))
+plt.plot(data['Date'], data['Open Rate'], label='Open Rate (%)')
+plt.plot(data['Date'], data['Click Rate'], label='Click Rate (%)')
+plt.xlabel('Date')
+plt.ylabel('Rate (%)')
+plt.title('Email Campaign Performance')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
